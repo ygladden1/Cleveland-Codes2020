@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+      img{
+	     width:80;
+		 display:
+		 margin-left: auto;
+		 margin-right: auto;
+	  }
+	  .backimage{
+	     background-image:url('images/bg-gradient.png');
+		 background-repeat: repeat-y;
+	  }
+	  ol{ list-style-image:url('images/pres-seal-sm.jpg');
+	      font-style:italic;
+		  margin-left:20px;
+		  }
+	  table,th, tr{border: solid black 1px;
+						background-color: white;
+						border-collapse: collapse;}
+						
+	 td{text-align:center;
+		font-weight:bold;}
+		
+	 .banner{
+				position: sticky;
+				top: 0px;}
+				
+	.collapse{visibility: collapse;}
+	
+	.show{visibility: visible;}
+	  
+   </style>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Lab7</title>
+   <script>
+		function hideRow() {
+             document.getElementById('testRow').className='collapse';
+        }
+           function showRow(){
+             document.getElementById('testRow').className='show';
+        }
+   </script>
+   
+</head>
+
+
+<body class="backimage">
+	<div></div>
+<h1 class="banner"><center><img src="images/us-presidents-banner.png" alt="us-presidents-banner"></center></h1>
+
+<ol>
+   <li>George Washington</li>
+   <li>John Adams</li>
+   <li>Thomas Jefferson</li>
+   <li>James Madison</li>
+   <li>James Monroe</li>
+   <li>John Quincy Adams</li>
+   <li>Andrew Jackson</li>
+   <li>Martin Van Buren</li>
+   <li>William Henry Harrison</li>
+</ol>
+
+
+	<br>
+	<br>
+   
+   
+    <button onclick="hideRow()">HIDE</button> <button onclick="showRow()">SHOW</button><br/>
+
+   <br>
+   <br>
+<table>
+   <tr>
+   <th colspan="3">Presidents</th>
+   </tr>
+   
+   <tr>
+    <td><img src="images/washington.jpg" alt="President George Washington"></td>
+	<td><img src="images/adams.jpg" alt="President John Adams"></td>
+	<td><img src="images/jefferson.jpg" alt="President Thomas Jefferson"></td>
+	</tr>
+	
+	<tr>
+	<td>George Washinton</td>
+	<td>John Adams</td>
+	<td>Thomas Jefferson</td>
+	</tr>
+	
+	<tr id="testRow">
+	<td><img src="images/madison.jpg" alt="President James Madison"></td>
+	<td><img src="images/monroe.jpg" alt="President James Monroe"></td>
+	<td><img src="images/john-quincy-adams.jpg" alt="President John Quincy Adams"></td>
+	</tr>
+	
+	<tr>
+	<td>James Madison</td>  
+    <td>James Monroe</td>
+	<td>John Quincy Adams</td>
+	</tr>
+	
+	<tr>
+	<td><img src="images/jackson.jpg" alt="President Andrew Jackson"></td>
+	<td><img src="images/van-buren.jpg" alt="President Martin Van Buren"></td>
+	<td><img src="images/harrison.jpg" alt="President William Henry Harrison"></td>
+   </tr>
+   
+   <tr>
+    <td>Andrew Jackson</td>
+	<td>Martin Van Buren</td>
+	<td>William Henry Harrison</td>
+   </tr>
+    
+	<tr>
+    <td><img src="images/washington.jpg" alt="President George Washington"></td>
+	<td><img src="images/adams.jpg" alt="President John Adams"></td>
+	<td><img src="images/jefferson.jpg" alt="President Thomas Jefferson"></td>
+	</tr>
+	
+	<tr>
+	<td>George Washinton</td>
+	<td>John Adams</td>
+	<td>Thomas Jefferson</td>
+	</tr>
+	
+	<tr>
+	<td><img src="images/madison.jpg" alt="President James Madison"></td>
+	<td><img src="images/monroe.jpg" alt="President James Monroe"></td>
+	<td><img src="images/john-quincy-adams.jpg" alt="President John Quincy Adams"></td>
+	</tr>
+	
+	<tr>
+	<td>James Madison</td>  
+    <td>James Monroe</td>
+	<td>John Quincy Adams</td>
+	</tr>
+	
+	<tr>
+	<td><img src="images/jackson.jpg" alt="President Andrew Jackson"></td>
+	<td><img src="images/van-buren.jpg" alt="President Martin Van Buren"></td>
+	<td><img src="images/harrison.jpg" alt="President William Henry Harrison"></td>
+   </tr>
+   
+   <tr>
+    <td>Andrew Jackson</td>
+	<td>Martin Van Buren</td>
+	<td>William Henry Harrison</td>
+   </tr>
+   
+   <tr>
+    <td><img src="images/washington.jpg" alt="President George Washington"></td>
+	<td><img src="images/adams.jpg" alt="President John Adams"></td>
+	<td><img src="images/jefferson.jpg" alt="President Thomas Jefferson"></td>
+	</tr>
+	
+	<tr>
+	<td>George Washinton</td>
+	<td>John Adams</td>
+	<td>Thomas Jefferson</td>
+	</tr>
+	
+	<tr>
+	<td><img src="images/madison.jpg" alt="President James Madison"></td>
+	<td><img src="images/monroe.jpg" alt="President James Monroe"></td>
+	<td><img src="images/john-quincy-adams.jpg" alt="President John Quincy Adams"></td>
+	</tr>
+	
+	<tr>
+	<td>James Madison</td>  
+    <td>James Monroe</td>
+	<td>John Quincy Adams</td>
+	</tr>
+	
+	<tr>
+	<td><img src="images/jackson.jpg" alt="President Andrew Jackson"></td>
+	<td><img src="images/van-buren.jpg" alt="President Martin Van Buren"></td>
+	<td><img src="images/harrison.jpg" alt="President William Henry Harrison"></td>
+   </tr>
+   
+   <tr>
+    <td>Andrew Jackson</td>
+	<td>Martin Van Buren</td>
+	<td>William Henry Harrison</td>
+   </tr>
+     
+</table>
+
+   
+   
+   <hr>
+<footer>
+        <p><center>&copy; 2020 <a href="https://www.tri-c.edu/programs/information-technology/programming-anddevelopment/clevelandcodes.html" target="_blank">Cleveland Codes Software Developers Academy</a></center></p>
+</footer>   
+</body>
+
+</html>
