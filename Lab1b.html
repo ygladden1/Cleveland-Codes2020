@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+   
+   </style>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Min Max</title>
+   <script>
+   
+	 "use strict";
+	 	  	  
+	  var userInput = 0;
+	  var count = 0;
+	  var maxValue;
+	  var minValue;
+	 	  
+	  while (userInput != -999){
+			userInput = prompt ("Enter a number from 1-100");
+			userInput = parseInt(userInput);
+			if(userInput != -999){
+				if(userInput < 1 || userInput > 100){
+					document.writeln("You did not enter a valid number");
+				}else {
+					count++;
+					if(count == 1){
+						maxValue = userInput;
+						minValue = userInput;
+					}else{
+						if(userInput > maxValue){
+							maxValue = userInput;
+						}else {
+							minValue = userInput;
+						}
+					}
+				}
+			}
+			
+		}
+				
+		document.writeln("Total numbers entered: " + count); 
+		document.writeln("The maxium value is: " + maxValue);
+		document.writeln("The minium value is:  " + minValue); 
+	 
+   </script>
+</head>
+<body>
+   <h2></h2>
+   
+   
+   <br>
+   <br>
+   <hr>
+<footer>
+         <p><center>&copy; 2020 <a href="https://www.tri-c.edu/programs/information-technology/programming-anddevelopment/clevelandcodes.html" target="_blank">Cleveland Codes Software Developers Academy</a></center></p>
+</footer>   
+</body>
+
+</html>
