@@ -1,75 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   <meta charset="utf-8"/>
    <style>
    
    </style>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>The United States</title>
+   <title>Fibonacci Sequence</title>
+   <pre>
    <script>
-   
+      "use strict";
+	  var fibNum;
+	  var fibArray = [];
+	  fibArray[0] = 0;
+	  fibArray[1] = 1;
+	  
+	  fibNum = prompt("How many numbers do you want in the sequence");
+	  fibNum = parseInt(fibNum);
+	  // check that fibNum >= 3
+	  if(fibNum < 3){
+		alert("Enter a number > 3");
+	  }else{
+		for (var i=2; i<fibNum; i++) {
+	     fibArray[i] = fibArray[i-1] + fibArray[i-2];
+		}
+	  }
+	  
+	  // read from array and print to screen
+	  for(var i=0; i<fibNum; i++){
+		document.writeln(fibArray[i]);
+	  }
+	   // calculate golden ratio
+	  //  last number / 2nd last number
+		var ratio= fibArray[fibNum -1]/fibArray[fibNum-2];
+		document.writeln("The ratio is: " + ratio);
    </script>
+   </pre>
 </head>
 <body>
+   <h2>Fibonacci Sequence</h2>
 
-   <header>
-   <h1><center>The United States</center></h1>
-   </header>
-   
-<details>
-   <summary><strong>20TH CENTURY USA</strong></summary>
-   <p>In the early 20th century three new states were admitted to the union, Oklahoma in 1907 and Arizona
-      and New Mexico in 1912.</p> 
-   <p>Also in the early 20th century the USA built the Panama Canal. President Theodore Roosevelt decided to
-build a canal across Panama in 1902. In 1903 the USA leased a 6-mile wide canal zone for 99 years. The
-canal was built in the years 1904-1914.</p>
-</details>   
-
-<details>
-   <summary><strong>THE USA IN THE FIRST WORLD WAR</strong></summary>
-   <p>When the First World War began in 1914 the USA remained neutral. However, Germany alienated
-American public opinion on 7 May 1915 when a German submarine sank the Cunard liner Lusitania,
-without warning. Among the 1,198 people killed were 128 Americans. Nevertheless, Woodrow Wilson
-fought the 1916 election partly on the slogan 'he kept us out of the war'.</p>
-
-   <p>On 6 April 1917 the USA declared war on Germany. America had a strong navy but a relatively small
-army. However, conscription was introduced and the USA began to raise a huge army. The first US
-troops were sent to France in June 1917 but it was the spring of 1918 before large numbers arrived. By
-September the US commander General John J. Pershing was able to begin an offensive against the
-Germans. In September 1918 US troops destroyed a German salient at St Mihiel. They then launched an
-attack on the Meuse-Argonne area. German troops were pushed back until Germany surrendered on 11
-November 1918.</p>
-</details>
-
-<details>
-   <summary><strong>THE 1920s</strong></summary>
-   <p>For most people (not all) the 1920s were a time of prosperity. In 1912 only 16% of homes had electric
-light. By 1927 it had risen to 63%. Electrical appliances became common, refrigerators, irons and fans.
-Radios also became common. By 1930 40% of homes had one. Cars also became common in the 1920s.
-Americans enjoyed the highest standard of living in the world.</p>
-</details>
-
-<p><a href="https://youtu.be/sYmPQwLuag0" target="_blank"><img src="Images/youtube-history.png" width="200"></a></p>
-
-<p>
-   <center><strong>Click the image to see a brief video history of the USA</strong></center> 
-</p>
-
-<p><strong>You can visit our <a href="Lab1.html" target="_blank">Intersting Facts</a> page to see fascinating information about the states and famous people from Ohio. <a href="Lab1.html #Kid Cudi">Click here to read about Kid Cudi.</strong> </a>
-</p>
-
-<p><strong><a href="docs\images.zip">Click here</a>to download a Zip file containing some great images.</strong></p>
-
-<br>
-  <br>
-  <br>
-  <hr>
-  <footer>
-        <p><center>&copy 2020 Cleveland Codes Software Developers Academy</center></p>
-  </footer>
- 
-  
-   
 </body>
+
 </html>
