@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8"/>
+   <style>
+   
+   </style>
+   <title>Lab 4 - Objects</title>
+   <pre>
+   <script>
+      "use strict";
+	  // function to read text and generate the output
+	  function updateScreen(){
+		// get the text from the textarea
+		var myText = document.getElementById("myText").value;
+		
+		// generate the data
+		var d = new Date();
+		var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		var dlMonth = d.getMonth();
+		var ddDate = d.getDate();
+		var dYear = d.getFullYear();
+		 document.getElementById("myDate").innerHTML = month[dlMonth].concat(' ', ddDate, ',' , dYear);
+		 		
+		// generate the time
+		var x = d.getTime();
+		var hour = d.getHours();
+		var minutes = d.getMinutes();
+		var seconds = d.getSeconds();
+		var mid='am';
+			if(hour==0){ //At 00 hours we need to show 12 am
+				hour=12;
+			}
+			else if(hour>12)
+			{
+			  hour=hour%12;
+			  mid='pm';
+			}
+         document.getElementById("myTime").innerHTML = hour + ":" + minutes + ":" + seconds + mid;
+			
+		// count the charset
+		var numChar = myText.length;
+		  document.getElementById("numChar").innerHTML = numChar;
+		
+		// uppercase
+		document.getElementById("allCaps").innerHTML = myText.toUpperCase();
+	  
+	  }
+	  // window.onload function to set up vent for button click
+      window.onload = function(){
+		document.getElementById("button").onclick = updateScreen;
+	  }
+   </script>
+   </pre>
+</head>
+<body>
+   <h2>Lab 4 - Objects</h2>
+   <textarea id="myText" rows="5" cols="40"></textarea>
+   <br /><br />
+   <button type="button" id="button">GO</button>
+   <br /><br />
+   The date is (Mon Date, Year): <span id="myDate"></span>
+   <br /><br />
+   The time is (Hr:Min:Sec AM): <span id="myTime"></span>
+   <br /><br />
+   Number of characters: <span id="numChar"></span>
+   <br /><br />
+   Text in ALL CAPS: <span id="allCaps"></span>
+</body>
+
+</html>
