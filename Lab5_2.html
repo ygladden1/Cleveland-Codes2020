@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+   
+   </style>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Lab5_2page2</title>
+   <script>
+	function closeSecondWindow(){
+		checkWin = window.close();	
+	}
+	window.onload = function(){
+	document.getElementById("widthWin").innerHTML = screen.width;
+	document.getElementById("heightWin").innerHTML = screen.height;
+	}
+   </script>
+</head>
+<body>
+   <h2>THIS IS A POP UP</h2>
+    <br /><br />
+	
+	Your screen width is: <span id="widthWin"></span> pixels
+	<br />
+	Your screen height is: <span id="heightWin"></span> pixels
+     
+   <br /><br  />
+  
+   <button type="button" id="button" value="closeSecondWindow" onclick="closeSecondWindow();">CLICK TO CLOSE</button>
+   
+   <br /><br />
+   
+<footer>
+         <p><center>&copy; 2020 <a href="https://www.tri-c.edu/programs/information-technology/programming-anddevelopment/clevelandcodes.html" target="_blank">Cleveland Codes Software Developers Academy</a></center></p>
+</footer>   
+</body>
+
+</html>
