@@ -2,194 +2,326 @@
 <html lang="en">
 <head>
    <style>
-      img{
-	     width:80;
-		 display:
-		 margin-left: auto;
-		 margin-right: auto;
-	  }
-	  .backimage{
-	     background-image:url('images/bg-gradient.png');
-		 background-repeat: repeat-y;
-	  }
-	  ol{ list-style-image:url('images/pres-seal-sm.jpg');
-	      font-style:italic;
-		  margin-left:20px;
-		  }
-	  table,th, tr{border: solid black 1px;
-						background-color: white;
-						border-collapse: collapse;}
-						
-	 td{text-align:center;
-		font-weight:bold;}
+		.blacktext { color: black; }
 		
-	 .banner{
-				position: sticky;
-				top: 0px;}
-				
-	.collapse{visibility: collapse;}
-	
-	.show{visibility: visible;}
-	  
+		.redtext {color: red; }
+		
+		table,th, td{border: solid black 1px;
+					 border-collapse: collapse;}
+					 
    </style>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Lab7</title>
+   <title>Lab 7 HTML Forms</title>
    <script>
-		function hideRow() {
-             document.getElementById('testRow').className='collapse';
-        }
-           function showRow(){
-             document.getElementById('testRow').className='show';
-        }
-   </script>
-   
+     "use strict"
+	 //onload 
+	// window.onload = function(){
+		//document.getElementById("msatchange").onclick=	
+		
+		
+	//martial status 	
+	function mstatuschange(){
+		var status = document.getElementById("mstatus").value;
+		if(status == "S" || status == ""){
+			document.getElementById("sname").disabled = true;
+		}
+		else{
+			document.getElementById("sname").disabled = false;
+		}
+	  } 
+	  
+	 
+	 //submit form
+	 function processForm(){
+	 
+		var formGood = true;
+		var fname = document.getElementById("fname").value;
+		var lname = document.getElementById("lname").value;
+		var address1 = document.getElementById("address1").value;
+		var address2 = document.getElementById("address2").value;
+		var city = document.getElementById("city").value;
+		var state = document.getElementById("state").value;
+		var zipcode = document.getElementById("zipcode").value;
+		var mstatus = document.getElementById("mstatus").value;
+		var sname = document.getElementById("sname").value;
+		//var gender = document.getElementById("gender").value;
+		var dob = document.getElementById("dob").value;
+		var email = document.getElementById("email").value;
+		var phone = document.getElementById("phone").value;
+		var password = document.getElementById("password").value;
+		var password2 = document.getElementById("password2").value;
+		
+		if (fname==""){
+			formGood= false;
+			document.getElementById("fnamelabel").className= "redtext";
+		} else{
+			document.getElementById("fnamelabel").className= "blacktext";
+		}
+		
+		if (lname==""){
+			formGood= false;
+			document.getElementById("lnamelabel").className= "redtext";
+		} else{
+			document.getElementById("lnamelabel").className= "blacktext";
+		}
+		
+		if (address1==""){
+			formGood= false;
+			document.getElementById("address1label").className= "redtext";
+		} else{
+			document.getElementById("address1label").className= "blacktext";
+		}
+		
+		if (address2==""){
+			formGood= false;
+			document.getElementById("address2label").className= "redtext";
+		} else{
+			document.getElementById("address2label").className= "blacktext";
+		}
+		
+		if (city==""){
+			formGood= false;
+			document.getElementById("citylabel").className= "redtext";
+		} else{
+			document.getElementById("citylabel").className= "blacktext";
+		}
+		
+		if (state==""){
+			formGood= false;
+			document.getElementById("statelabel").className= "redtext";
+		} else{
+			document.getElementById("statelabel").className= "blacktext";
+		}
+		
+		if (zipcode==""){
+			formGood= false;
+			document.getElementById("zipcodelabel").className= "redtext";
+		} else{
+			document.getElementById("zipcodelabel").className= "blacktext";
+		}
+		
+		if (mstatus==""){
+			formGood= false;
+			document.getElementById("mstatuslabel").className= "redtext";
+		} else{
+			document.getElementById("mstatuslabel").className= "blacktext";
+		}
+		
+		if (sname=="" && mstatus== "M"){
+			formGood= false;
+			document.getElementById("snamelabel").className= "redtext";
+		} else{
+			document.getElementById("snamelabel").className= "blacktext";
+		}
+		
+		if(!document.getElementById("male").checked && !document.getElementById("female").checked){
+			formGood = false;
+			document.getElementById("genderlabel").className= "redtext";
+		} else{
+			document.getElementById("genderlabel").className= "blacktext";
+		}
+		
+		if (dob==""){
+			formGood= false;
+			document.getElementById("doblabel").className= "redtext";
+		} else{
+			document.getElementById("doblabel").className= "blacktext";
+		}
+		
+		if (email==""){
+			formGood= false;
+			document.getElementById("emaillabel").className= "redtext";
+		} else{
+			document.getElementById("emaillabel").className= "blacktext";
+		}
+		
+		if (phone==""){
+			formGood= false;
+			document.getElementById("phonelabel").className= "redtext";
+		} else{
+			document.getElementById("phonelabel").className= "blacktext";
+		}
+		
+		if(password != password2){
+			formGood = false;
+			document.getElementById("passwordlabel").className = "redtext";
+			document.getElementById("password2label").className = "redtext";
+		} else {
+			document.getElementById("passwordlabel").className = "blacktext";
+			document.getElementById("password2label").className = "blacktext";
+		}		
+		if (password==""){
+			formGood= false;
+			document.getElementById("passwordlabel").className= "redtext";
+		} else{
+			document.getElementById("passwordlabel").className= "blacktext";
+		}
+		
+		if (password2==""){
+			formGood= false;
+			document.getElementById("password2label").className= "redtext";
+		} else{
+			document.getElementById("password2label").className= "blacktext";
+		}
+		
+		
+		
+		if (formGood){
+			document.getElementById("myForm").submit();
+		} else {
+			document.getElementById("errorMessage").innerHTML= "Please correct the following errors";
+		}
+	 }
+	 
+	</script>
 </head>
 
+<body>
 
-<body class="backimage">
-	<div></div>
-<h1 class="banner"><center><img src="images/us-presidents-banner.png" alt="us-presidents-banner"></center></h1>
+	<h2 id="errorMessage" class="redtext"></h2>
 
-<ol>
-   <li>George Washington</li>
-   <li>John Adams</li>
-   <li>Thomas Jefferson</li>
-   <li>James Madison</li>
-   <li>James Monroe</li>
-   <li>John Quincy Adams</li>
-   <li>Andrew Jackson</li>
-   <li>Martin Van Buren</li>
-   <li>William Henry Harrison</li>
-</ol>
-
-
-	<br>
-	<br>
-   
-   
-    <button onclick="hideRow()">HIDE</button> <button onclick="showRow()">SHOW</button><br/>
-
-   <br>
-   <br>
-<table>
-   <tr>
-   <th colspan="3">Presidents</th>
-   </tr>
-   
-   <tr>
-    <td><img src="images/washington.jpg" alt="President George Washington"></td>
-	<td><img src="images/adams.jpg" alt="President John Adams"></td>
-	<td><img src="images/jefferson.jpg" alt="President Thomas Jefferson"></td>
-	</tr>
-	
-	<tr>
-	<td>George Washinton</td>
-	<td>John Adams</td>
-	<td>Thomas Jefferson</td>
-	</tr>
-	
-	<tr id="testRow">
-	<td><img src="images/madison.jpg" alt="President James Madison"></td>
-	<td><img src="images/monroe.jpg" alt="President James Monroe"></td>
-	<td><img src="images/john-quincy-adams.jpg" alt="President John Quincy Adams"></td>
-	</tr>
-	
-	<tr>
-	<td>James Madison</td>  
-    <td>James Monroe</td>
-	<td>John Quincy Adams</td>
-	</tr>
-	
-	<tr>
-	<td><img src="images/jackson.jpg" alt="President Andrew Jackson"></td>
-	<td><img src="images/van-buren.jpg" alt="President Martin Van Buren"></td>
-	<td><img src="images/harrison.jpg" alt="President William Henry Harrison"></td>
-   </tr>
-   
-   <tr>
-    <td>Andrew Jackson</td>
-	<td>Martin Van Buren</td>
-	<td>William Henry Harrison</td>
-   </tr>
+   <form action="http://www.waynedog.net/formreader.php" method="post" id="myForm" name="myForm" enctype="multipart/form-data" target="_blank" accept-charset="ISO-8859-1">
     
-	<tr>
-    <td><img src="images/washington.jpg" alt="President George Washington"></td>
-	<td><img src="images/adams.jpg" alt="President John Adams"></td>
-	<td><img src="images/jefferson.jpg" alt="President Thomas Jefferson"></td>
-	</tr>
-	
-	<tr>
-	<td>George Washinton</td>
-	<td>John Adams</td>
-	<td>Thomas Jefferson</td>
-	</tr>
-	
-	<tr>
-	<td><img src="images/madison.jpg" alt="President James Madison"></td>
-	<td><img src="images/monroe.jpg" alt="President James Monroe"></td>
-	<td><img src="images/john-quincy-adams.jpg" alt="President John Quincy Adams"></td>
-	</tr>
-	
-	<tr>
-	<td>James Madison</td>  
-    <td>James Monroe</td>
-	<td>John Quincy Adams</td>
-	</tr>
-	
-	<tr>
-	<td><img src="images/jackson.jpg" alt="President Andrew Jackson"></td>
-	<td><img src="images/van-buren.jpg" alt="President Martin Van Buren"></td>
-	<td><img src="images/harrison.jpg" alt="President William Henry Harrison"></td>
-   </tr>
-   
-   <tr>
-    <td>Andrew Jackson</td>
-	<td>Martin Van Buren</td>
-	<td>William Henry Harrison</td>
-   </tr>
-   
-   <tr>
-    <td><img src="images/washington.jpg" alt="President George Washington"></td>
-	<td><img src="images/adams.jpg" alt="President John Adams"></td>
-	<td><img src="images/jefferson.jpg" alt="President Thomas Jefferson"></td>
-	</tr>
-	
-	<tr>
-	<td>George Washinton</td>
-	<td>John Adams</td>
-	<td>Thomas Jefferson</td>
-	</tr>
-	
-	<tr>
-	<td><img src="images/madison.jpg" alt="President James Madison"></td>
-	<td><img src="images/monroe.jpg" alt="President James Monroe"></td>
-	<td><img src="images/john-quincy-adams.jpg" alt="President John Quincy Adams"></td>
-	</tr>
-	
-	<tr>
-	<td>James Madison</td>  
-    <td>James Monroe</td>
-	<td>John Quincy Adams</td>
-	</tr>
-	
-	<tr>
-	<td><img src="images/jackson.jpg" alt="President Andrew Jackson"></td>
-	<td><img src="images/van-buren.jpg" alt="President Martin Van Buren"></td>
-	<td><img src="images/harrison.jpg" alt="President William Henry Harrison"></td>
-   </tr>
-   
-   <tr>
-    <td>Andrew Jackson</td>
-	<td>Martin Van Buren</td>
-	<td>William Henry Harrison</td>
-   </tr>
-     
-</table>
+	 <table>
+	 
+		<tr>
+			<th colspan="2">Registration</th>
+		</tr>
+		
+		<tr>	
+			<td><label for="fname" id="fnamelabel" class="blacktext">First Name:</label>
+			<input type="text" name="fname" id="fname"></td>
+			<td><label for="lname" id="lnamelabel" class="blacktext">Last Name:</label>
+			<input type="text" name="lname" id="lname"></td>
+		</tr>
+		
+		<tr>
+			<td><label for="address1" id="address1label" class="blacktext">Address: </label>
+			<input type="text" name="address1" id="address1"></td>
+			<td><label for="address2" id="address2label" class="blacktext">Suite or Apt: </label>
+			<input type="text" name="address2" id="address2"></td>
+			
+		</tr>
+		
+		<tr>
+			<td><label for="city" id="citylabel" class="blacktext">City: </label>
+			<input type="text" name="city" id="city"></td>
+			 <td><label for="state" id="statelabel" class="blacktext">State:</label>
+			 
+				<select name="state" id="state">
+					<option value="">Select a state</option>
+					<option value="AL">Alabama</option>
+					<option value="AK">Alaska</option>
+					<option value="AZ">Arizona</option>
+					<option value="AR">Arkansas</option>
+					<option value="CA">California</option>
+					<option value="CO">Colorado</option>
+					<option value="CT">Connecticut</option>
+					<option value="DE">Delaware</option>
+					<option value="DC">Dist of Columbia</option>
+					<option value="FL">Florida</option>
+					<option value="GA">Georgia</option>
+					<option value="HI">Hawaii</option>
+					<option value="ID">Idaho</option>
+					<option value="IL">Illinois</option>
+					<option value="IN">Indiana</option>
+					<option value="IA">Iowa</option>
+					<option value="KS">Kansas</option>
+					<option value="KY">Kentucky</option>
+					<option value="LA">Louisiana</option>
+					<option value="ME">Maine</option>
+					<option value="MD">Maryland</option>
+					<option value="MA">Massachusetts</option>
+					<option value="MI">Michigan</option>
+					<option value="MN">Minnesota</option>
+					<option value="MS">Mississippi</option>
+					<option value="MO">Missouri</option>
+					<option value="MT">Montana</option>
+					<option value="NE">Nebraska</option>
+					<option value="NV">Nevada</option>
+					<option value="NH">New Hampshire</option>
+					<option value="NJ">New Jersey</option>
+					<option value="NM">New Mexico</option>
+					<option value="NY">New York</option>
+					<option value="NC">North Carolina</option>
+					<option value="ND">North Dakota</option>
+					<option value="OH">Ohio</option>
+					<option value="OK">Oklahoma</option>
+					<option value="OR">Oregon</option>
+					<option value="PA">Pennsylvania</option>
+					<option value="RI">Rhode Island</option>
+					<option value="SC">South Carolina</option>
+					<option value="SD">South Dakota</option>
+					<option value="TN">Tennessee</option>
+					<option value="TX">Texas</option>
+					<option value="UT">Utah</option>
+					<option value="VT">Vermont</option>
+					<option value="VA">Virginia</option>
+					<option value="WA">Washington</option>
+					<option value="WV">West Virginia</option>
+					<option value="WI">Wisconsin</option>
+					<option value="WY">Wyoming</option>
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><label for="zipcode" id="zipcodelabel" class="blacktext">Zip Code: </label>
+			<input type="text" name="zipcode" id="zipcode"></td>
+			<td></td>
+		</tr>
+		
+		<tr>
+			<td><label for="mstatus" id="mstatuslabel" class="blacktext">Marital Status: </label>
+							<select onchange="mstatuschange()" id="mstatus" name="mstatus">
+		                      <option value=""></option>
+							  <option value="S">Single</option>
+							  <option value="M">Married</option>
+						  </select>
+			</td>
+			<td>
+				<label for="sname" id="snamelabel" class="blacktext">Spouse Name: </label>
+				<input type="text" name="sname" id="sname">
+			</td>
+		</tr>
+		
+		<tr>
+			<td><label for="gender" id="genderlabel" class="blacktext">Gender: </label>Male
+			<input type="radio" name='gender' id="male" value="male">
+			Female<input type="radio" name="gender" id="female" value="female"></td>
+			
+			<td><label for="dob" id="doblabel" class="blacktext">Birthdate:</label>
+				<input type="date" name='dob' id="dob"></td>
+		</tr>
+			
+		<tr>
+			<td><label for="email" id="emaillabel" class="blacktext">Email: </label>
+				<input type="email" name='email' id="email"></td>
+				
+			<td><label for="phone" id="phonelabel" class="blacktext">Phone:</label>
+				<input type="text" name='phone' id="phone"></td>
+		</tr>
+		
+		<tr>
+			<td><label for="password" id="passwordlabel" class="blacktext">Password: </label>
+				<input type="password" name='password' id="password"></td>
+			<td><label for="password2" id="password2label" class="blacktext">Confirm Password:</label>
+				<input type="password" name='password2' id="password2"></td><br> 
+		</tr>
+		
+		<tr>
+			<td><input type="reset" value="Reset"></td>
+			<td><button type="button" id="button" onclick="processForm()">Submit</button></td>
+		</tr>
+         
+	 </table>
+   </form>
 
    
-   
-   <hr>
+<br>
+<br>   
+<hr>
 <footer>
         <p><center>&copy; 2020 <a href="https://www.tri-c.edu/programs/information-technology/programming-anddevelopment/clevelandcodes.html" target="_blank">Cleveland Codes Software Developers Academy</a></center></p>
 </footer>   
