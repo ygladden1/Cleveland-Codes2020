@@ -1,0 +1,10 @@
+1.	INSERT INTO invoices VALUES (NULL,32, 'AX-014-27', '08-01-2014', 434.58, 0.00, 0.00, 2, '08-31-2014', NULL)
+
+2.	INSERT INTO invoice_line_items VALUES (115, 1, 160, 180.23, 'Hard drive'), (115, 2, 527, 254.35, 'Exchange Server update')
+
+3.	UPDATE `invoices` SET invoice_date= NOW(), credit_total= .10 * invoice_total, payment_total= invoice_total -credit_total WHERE invoice_id = 115
+
+4.	UPDATE `vendors` SET `default_account_number`= 403 WHERE vendor_id = 44
+
+5.	DELETE FROM invoice_line_items WHERE invoice_id = 115;
+	DELETE FROM `invoices` WHERE invoice_id = 115;
