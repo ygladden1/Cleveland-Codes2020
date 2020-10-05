@@ -1,0 +1,18 @@
+1.	CREATE VIEW open_items AS
+   SELECT vendor_name, invoice_number, invoice_total, invoice_total - payment_total - credit_total AS balance_due
+ 	 FROM vendors JOIN invoices
+ 		ON vendors.vendor_id = invoices.vendor_id
+ 			WHERE invoice_total - payment_total - credit_total > 0
+ 				ORDER BY vendor_name
+				
+2.	SELECT * 
+	FROM `open_items`
+		WHERE balance_due >= 1000
+		
+3.	CREATE VIEW vendor_address AS
+		SELECT vendor_name, vendor_address1, vendor_address2, vendor_city, vendor_state, vendor_zip_code
+			FROM vendors
+			
+4.	UPDATE vendor_address
+	SET vendor_address1 = '1990 Westwood Blvd ', vendor_address2 = 'Ste 260'
+		WHERE vendor_address.vendor_id = 4;
