@@ -1,0 +1,29 @@
+CREATE TABLE ywaller.Winery(
+    Winery_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Winery_name CHAR(20),
+    Address VARCHAR(20),
+	Region_id FOREIGN KEY
+    
+)
+CREATE TABLE ywaller.Region
+(
+	Region_id,
+	Region_name char,
+	State char,
+	
+)
+CREATE TABLE ywaller.Winery_Detail
+(
+	Winery_id int,
+	Wine_name varChar(),
+	Variety char,
+	Color char,
+	Vintage varChar()
+)
+CREATE TABLE ywaller.Distributor
+(
+	Contact_name char,
+	Phone_number char,
+	Winery_id int FOREIGN KEY,
+	Market_value 
+)
