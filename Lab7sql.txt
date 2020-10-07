@@ -1,0 +1,52 @@
+1.	SELECT vendor_name,
+	 ROUND(SUM(invoice_total),2) AS invoice_sum
+	 FROM vendors JOIN invoices
+	 ON vendors.vendor_id = invoices.vendor_id
+	 GROUP BY vendor_name
+	 
+2.	SELECT `vendor_name`, SUM(payment_total) AS payment_sum
+	 FROM `vendors` v JOIN invoices i
+	 ON v.vendor_id = i.vendor_id
+	 GROUP BY vendor_name
+	 ORDER BY payment_sum DESC
+	 
+3.	SELECT vendor_name, COUNT(*) AS invoice_count, SUM(invoice_total) AS invoice_total_sum
+	 FROM `vendors` v JOIN invoices i
+	 ON v.vendor_id = i.vendor_id
+	 GROUP BY vendor_name
+	 ORDER BY invoice_count DESC
+	 
+4.	SELECT account_description, COUNT(invoice_id) AS li_count, SUM(line_item_amount) AS lia_sum
+	 FROM invoice_line_items il JOIN general_ledger_accounts gl 
+	 USING (account_number)
+	 GROUP BY account_number
+	 HAVING li_count > 1
+     ORDER BY lia_sum
+	 
+	 
+5.	SELECT account_description, COUNT(*) AS li_count, SUM(line_item_amount) AS lia_sum
+	FROM invoice_line_items il 
+ 	JOIN general_ledger_accounts gl 
+		ON gl.account_number = il.account_number
+ 	JOIN invoices i 
+ 		ON il.invoice_id= i.invoice_id
+	WHERE invoice_date between '2014-04-01' and '2014-06-30'
+	GROUP BY account_description
+	having li_count > 1
+	ORDER BY lia_sum DESC
+	
+6.	SELECT account_number, SUM(line_item_amount) AS line_item_amount_sum
+	FROM invoice_line_items
+	GROUP BY account_number WITH ROLLUP
+	
+7.	SELECT vendor_name, COUNT(DISTINCT li.account_number) AS number_of_gl_accounts
+	FROM vendors v
+	JOIN invoices i
+    	ON v.vendor_id = i.vendor_id
+    JOIN invoice_line_items li
+    	ON i.invoice_id = li.invoice_id
+	GROUP BY vendor_name
+	HAVING number_of_gl_accounts > 1
+
+
+
