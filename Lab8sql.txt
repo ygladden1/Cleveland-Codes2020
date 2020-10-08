@@ -1,0 +1,84 @@
+1.	DROP PROCEDURE IF EXISTS test;
+	-- Change statement delimiter from semicolon to double front slash
+	DELIMITER //
+	CREATE PROCEDURE test ()
+	BEGIN 
+		DECLARE invoice_count INT;
+    
+		SELECT COUNT(*)
+		INTO invoice_count
+		FROM invoices
+		WHERE invoice_total - payment_total - credit_total >=5000;
+    
+		SELECT concat(invoice_count, ' invoices exceed $5000.') AS message;
+	END//
+	
+2.	DROP PROCEDURE IF EXISTS factiorial;
+	DELIMITER //
+	CREATE FUNCTION factiorial 
+	( input_parm INT ) 
+	RETURNS INT 
+	BEGIN
+		DECLARE i INT DEFAULT 1; 
+		DECLARE fact INT DEFAULT 1; 
+		WHILE i <= input_parm DO 
+		SET fact = fact * i; SET i = i + 1; 
+		END WHILE; 
+		RETURN fact; 
+	END//
+	
+3.	DROP PROCEDURE IF EXISTS insert_glaccount;
+	DELIMITER //
+	CREATE PROCEDURE insert_glaccount
+	(
+		account_number_param  INT,
+		account_description_param    VARCHAR(50)
+	)
+	BEGIN
+		INSWERT INTO general_ledger_accounts
+		VALUES 	(account_number_param, account_description_param);
+	END//
+	
+	DELIMITER ;
+	
+4.	DROP PROCEDURE IF EXISTS test_glaccounts_description;
+	DELIMITER //
+	CREATE FUNCTION test_glaccounts_description
+	(
+		account_description_param VARCHAR(50)
+	)
+	RETURNS INT
+	BEGIN
+		DECLARE row_count INT;
+		SELECT count(*) INTO row_count
+		FROM general_ledger_accounts gl
+		WHERE gl.account_description = account_description_param;
+		
+		IF row_count = 0 THEN
+			RETURN FALSE;
+		ELSE
+			RETURN TRUE;
+	END IF;
+	
+	END//
+	
+5.	DROP FUNCTION IF EXISTS convert_to_currency
+	DELIMITER //
+	CREATE FUNCTION convert_to_currency
+	(
+		value VARCHAR(25)
+	)
+	RETURNS VARCHAR (25)
+	
+	BEGIN
+	
+		DECLARE currency VARCHAR (25);
+		IF value > 0 THEN
+			SET currency = concat('$', FORMAT(value, 2));
+		ELSEIF value < 0 THEN
+			SET currency = concat('($', FORMAT(-1 * value, 2), ')' );
+		ELSE SET currency = ('50.00');
+		END IF;
+		
+		RETURN currency;
+	END//
