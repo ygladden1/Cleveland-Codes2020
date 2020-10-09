@@ -1,0 +1,65 @@
+2.	DROP TRIGGER IF EXISTS `invoices_before_update`;
+	CREATE DEFINER=`ywaller`@`%` TRIGGER `invoices_before_update` 
+		BEFORE UPDATE ON `invoices` 
+		FOR EACH ROW 
+		BEGIN 
+			DECLARE sum_line_item_amount DECIMAL(9,2);
+			SELECT SUM(line_item_amount) 
+				INTO sum_line_item_amount 
+			FROM invoice_line_items 
+			WHERE invoice_id = NEW.invoice_id; 
+			
+			IF sum_line_item_amount != NEW.invoice_total
+				THEN SIGNAL SQLSTATE 'HY000' 
+				SET MESSAGE_TEXT = 'Line item total must match invoice total.'; 
+			END IF; 
+			
+			IF payment_total + credit_total > invoice_total 
+				THEN SIGNAL SQLSTATE 'HY000' 
+				SET MESSAGE_TEXT = 'Amount is larger than invoice total.'; 
+			END IF; 
+	END//
+	
+	UPDATE invoices
+	SET payment_total = 1000, credit_total = 500, invoice_total = 800  
+	WHERE invoice_id = 100
+	
+4.	DROP TRIGGER IF EXISTS 'invoices_after_update';
+	DELIMITER //
+
+	CREATE TRIGGER invoices_after_update
+
+	AFTER UPDATE ON invoices
+
+	FOR EACH ROW
+
+	BEGIN
+
+		INSERT INTO invoices_audit VALUES
+		(OLD.vendor_id, OLD.invoice_number, OLD.invoice_total, 'UPDATED', NOW());
+	END//
+
+	DELIMITER ;
+	
+	UPDATE invoices
+	SET payment_total = 200
+	WHERE invoice_id = 100;
+	
+	SELECT * FROM invoices_audit;
+	
+	
+5.	SHOW VARIABLES LIKE 'event_scheduler'
+
+	SET GLOBAL event_scheduler = ON;
+	
+	DROP EVENT IF EXISTS minute_test;
+	
+	DELIMITER//
+	
+	CREATE EVERY minute_test
+	ON SCHEDULE EVENT 1 MINUTE
+	DO BEGIN
+		INSERT INTO invoices_audit VALUES
+		(1234, 'test', 100.00, 'INSERTED', NOW());
+	END//
+	DELIMITER ;
